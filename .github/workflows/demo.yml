@@ -1,0 +1,17 @@
+name: Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job-run-on-vm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: id
+        run: id
+      - name: env
+        run: env | sort
+      - name: pwd
+        run: pwd
