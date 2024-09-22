@@ -1,0 +1,23 @@
+name: Index
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    env:
+      VALUE: |
+        [
+          { "name": "apple", "quantity": 1 },
+          { "name": "orange", "quantity": 2 },
+          { "name": "pear", "quantity": 1 }
+        ]
+    steps:
+      - name: template
+        timeout-minutes: ${{ 10 }}
+        run: |
+          echo "toJSON(NaN)" "${{ toJSON(NaN) }}"
+        env: 
+          FOOBAR: ${{ true }}

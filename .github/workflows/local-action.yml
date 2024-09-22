@@ -1,0 +1,52 @@
+name: Local Action
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      coe:
+        description: 'continue-on-error in local js action'
+        type: boolean
+      abcxyz:
+        description: abcxyz
+        default: abcxyz
+      pre:
+        description: pre-action
+      post:
+        description: post-action
+
+jobs:
+  local-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Local JS Action
+        id: js
+        uses: dungdm93/demo/.github/actions/success@main
+        with:
+          coe: 'true'
+          foobar: 'foobar'
+        env:
+          ABC: xyz
+          COE: ${{ inputs.coe }}
+          FOOBAR: ${{ inputs.foobar }}
+          STEP_INPUTS: ${{ toJson(inputs) }}
+        # continue-on-error: ${{ inputs.coe }}
+      - name: Local JS Action 2
+        id: js2
+        uses: dungdm93/demo/.github/actions/js@main
+      - name: Local Composite Action
+        id: composite
+        uses: ./.github/actions/composite
+        with:
+          coe: 'true'
+          foobar: 'foobar'
+        env:
+          ABC: xyz
+          COE: ${{ inputs.coe }}
+          FOOBAR: ${{ inputs.foobar }}
+          STEP_INPUTS: ${{ toJson(inputs) }}
+      - name: last
+        run: echo $STEPS
+        env:
+          STEPS: ${{ toJson(steps) }}

@@ -1,0 +1,82 @@
+name: Parser
+
+on:
+  # push:
+  workflow_dispatch:
+
+env:
+  # myString: ${{ 'abc\nx''yx\r\foobar\u123' }}
+
+  # myNum1: ${{ 7_11 }}
+  # myNum2: ${{ -711 }}
+  # myNum3: ${{ +711 }}
+  # myNum4: ${{ 71.1 }}
+  # myNum5: ${{ -71.1 }}
+  # myNum6: ${{ +71.1 }}
+  
+  # myE1: ${{ 711e2 }}
+  # myE2: ${{ -711e2 }}
+  # myE3: ${{ +711e2 }}
+  # myE4: ${{ 71.1e2 }}
+  # myE5: ${{ -71.1e2 }}
+  # myE6: ${{ +71.1e2 }}
+
+  # myNE1: ${{ 711e-2 }}
+  # myNE2: ${{ -711e-2 }}
+  # myNE3: ${{ +711e-2 }}
+  # myNE4: ${{ 71.1e-2 }}
+  # myNE5: ${{ -71.1e-2 }}
+  # myNE6: ${{ +71.1e-2 }}
+
+  # myLead0Num1: ${{ 011 }}
+  # myLead0Num2: ${{ -011 }}
+  # myLead0Num3: ${{ +011 }}
+  # myLead0Num4: ${{ 01.1 }}
+  # myLead0Num5: ${{ -01.1 }}
+  # myLead0Num6: ${{ +01.1 }}
+
+  # myLeadDot: ${{ .1 }}
+  # myLeadDot2: ${{ -.1 }}
+  # myLeadDot3: ${{ .1E1 }}
+  # myLeadDot4: ${{ -.1E2 }}
+  # myLeadDot5: ${{ .1E-1 }}
+  # myLeadDot6: ${{ -.1E-2 }}
+
+  # myHex: ${{ 0xff }}
+  myOct: ${{ 0o1234 }}
+  myFloat: ${{ 6. }}
+
+jobs:
+  parser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: env
+        run: env | sort
+
+      - name: template
+        run: |
+          echo "fromJSON(github)" ${{ fromJSON(github) }}
+
+      # echo "'TEST' < 'test'" ${{ 'TEST' < 'test' }}
+      # echo "'TEST' <= 'test'" ${{ 'TEST' <= 'test' }}
+      # echo "'TEST' > 'test'" ${{ 'TEST' > 'test' }}
+      # echo "'TEST' >= 'test'" ${{ 'TEST' >= 'test' }}
+      # echo "'TEST' == 'test'" ${{ 'TEST' == 'test' }}
+
+      # - env:
+      #     matrix: '{"first":"mot","second":"hai"}'
+      #   run: echo ${{ fromJSON(env.matrix).first }}
+
+      # - run: echo ${{ (true).name }}
+
+      # - env:
+      #     prop: event_name
+      #   run: echo ${{ (github)[env.prop] }}
+
+      # - run: echo ${{ contains((github.event).issue.labels.*['name'], 'bug') }}
+
+      # - run: |
+      #     # echo ${{ true == 10 > 9  }}
+      #     # echo ${{ false == 9 < 10 }}
+      #     # echo ${{ !true || true }}
+      #     echo ${{ true || true && false }}

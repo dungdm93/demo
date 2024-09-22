@@ -1,0 +1,16 @@
+name: A Composite Action
+description: 'Greet someone and record the time'
+outputs:
+  STEP_OUTPUT:
+    description: dump inputs
+    value: ${{ toJson(inputs) }}
+runs:
+  using: composite
+  steps:
+  - run: env
+    shell: bash
+    env:
+      INTERNAL_ABC: xyz
+      INTERNAL_COE: ${{ inputs.coe }}
+      INTERNAL_FOOBAR: ${{ inputs.foobar }}
+      INTERNAL_STEP_INPUTS: ${{ toJson(inputs) }}

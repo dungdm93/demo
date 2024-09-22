@@ -1,0 +1,9 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+runs:
+  using: 'node20'
+  main: 'index.js'
+  # pre-if: inputs.pre == github.action
+  pre: pre.js
+  # post-if: inputs.post == github.action
+  post: post.js
