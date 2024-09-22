@@ -20,9 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        env:
+          JOB: ${{ toJson(job) }}
+          STEPS: ${{ toJson(steps) }}
       - name: Local JS Action
         id: js
-        uses: dungdm93/demo/.github/actions/success@main
+        uses: dungdm93/demo/.github/actions/js1@main
         with:
           coe: 'true'
           foobar: 'foobar'
@@ -30,14 +33,20 @@ jobs:
           ABC: xyz
           COE: ${{ inputs.coe }}
           FOOBAR: ${{ inputs.foobar }}
+          JOB: ${{ toJson(job) }}
+          STEPS: ${{ toJson(steps) }}
           STEP_INPUTS: ${{ toJson(inputs) }}
         # continue-on-error: ${{ inputs.coe }}
       - name: Local JS Action 2
         id: js2
-        uses: dungdm93/demo/.github/actions/js@main
+        uses: dungdm93/demo/.github/actions/js2@main
+        env:
+          JOB: ${{ toJson(job) }}
+          STEPS: ${{ toJson(steps) }}
       - name: Local Composite Action
         id: composite
         uses: ./.github/actions/composite
+        if: ${{ 1 == 1 }}
         with:
           coe: 'true'
           foobar: 'foobar'
@@ -45,8 +54,13 @@ jobs:
           ABC: xyz
           COE: ${{ inputs.coe }}
           FOOBAR: ${{ inputs.foobar }}
+          JOB: ${{ toJson(job) }}
+          STEPS: ${{ toJson(steps) }}
           STEP_INPUTS: ${{ toJson(inputs) }}
       - name: last
-        run: echo $STEPS
+        run: |
+          echo "hello world"
+        if: always()
         env:
+          JOB: ${{ toJson(job) }}
           STEPS: ${{ toJson(steps) }}
