@@ -40,3 +40,9 @@ jobs:
           JOB: ${{ toJson(job) }}
           STEPS: ${{ toJson(steps) }}
           STEP_INPUTS: ${{ toJson(inputs) }}
+      - name: Local Docker2
+        id: dck2
+        uses: dungdm93/demo/.github/actions/docker2@main
+        with:
+          entrypoint: echo
+          args: Hello world

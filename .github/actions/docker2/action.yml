@@ -1,0 +1,11 @@
+name: 'Docker action'
+description: 'Greet someone and record the time'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - foobar
+    - abcxyz
+  entrypoint: /actions/main.sh
+  pre-entrypoint: /actions/pre.sh
+  post-entrypoint: /actions/post.sh
