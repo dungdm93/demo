@@ -1,0 +1,40 @@
+name: Local Docker
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      coe:
+        description: 'continue-on-error in local js action'
+        type: boolean
+      abcxyz:
+        description: abcxyz
+        default: abcxyz
+      pre:
+        description: pre-action
+      post:
+        description: post-action
+
+jobs:
+  local:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          tree -Fap /home/runner/work/
+      - uses: actions/checkout@v4
+        env:
+          JOB: ${{ toJson(job) }}
+          STEPS: ${{ toJson(steps) }}
+      - name: Local Docker
+        id: dck
+        uses: dungdm93/demo/.github/actions/docker@main
+        with:
+          coe: 'true'
+          foobar: 'foobar'
+        env:
+          ABC: xyz
+          COE: ${{ inputs.coe }}
+          FOOBAR: ${{ inputs.foobar }}
+          JOB: ${{ toJson(job) }}
+          STEPS: ${{ toJson(steps) }}
+          STEP_INPUTS: ${{ toJson(inputs) }}
