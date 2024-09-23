@@ -1,4 +1,4 @@
-name: Local Action
+name: Local JS
 
 on:
   push:
@@ -16,7 +16,7 @@ on:
         description: post-action
 
 jobs:
-  local-action:
+  local:
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -45,20 +45,6 @@ jobs:
         env:
           JOB: ${{ toJson(job) }}
           STEPS: ${{ toJson(steps) }}
-      - name: Local Composite Action
-        id: composite
-        uses: ./.github/actions/composite
-        if: ${{ 1 == 1 }}
-        with:
-          coe: 'true'
-          foobar: 'foobar'
-        env:
-          ABC: xyz
-          COE: ${{ inputs.coe }}
-          FOOBAR: ${{ inputs.foobar }}
-          JOB: ${{ toJson(job) }}
-          STEPS: ${{ toJson(steps) }}
-          STEP_INPUTS: ${{ toJson(inputs) }}
       - name: last
         run: |
           echo "hello world"
