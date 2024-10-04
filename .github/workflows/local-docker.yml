@@ -46,3 +46,5 @@ jobs:
         with:
           entrypoint: echo
           args: Hello world
+          ctx_gh: ${{ toJson(github) }}
+          ctx_runner: ${{ toJson(runner) }}
