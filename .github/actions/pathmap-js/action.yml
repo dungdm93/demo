@@ -1,0 +1,5 @@
+name: PathMap
+description: Print Path map info
+runs:
+  using: node20
+  main: index.js

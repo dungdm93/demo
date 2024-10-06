@@ -1,0 +1,40 @@
+name: Path Map
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  pathmap:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:trixie-slim
+      volumes:
+      - my_docker_volume:/volume_mount
+      - /data/my_data
+      - /tmp/:/destination/directory
+    steps:
+      - name: Before All
+        run: |
+          set -x
+          id
+          hostname
+          echo $HOME
+          echo $PATH
+          ls -ahl ~
+          env
+          ls -ahl /__e
+        env:
+          CTX_GH: ${{ toJson(github) }}
+          CTX_RUNNER: ${{ toJson(runner) }}
+      - name: Add Path in Container
+        run: |
+          echo "/github/home/foobar" >> $GITHUB_PATH
+          echo "/__w/abcxyz" >> $GITHUB_PATH
+      - name: JS action
+        uses: dungdm93/demo/.github/actions/pathmap-js@main
+      - name: Docker action
+        uses: dungdm93/demo/.github/actions/pathmap-docker@main
+      - name: After All
+        run: |
+          echo $PATH
