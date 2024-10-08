@@ -8,7 +8,8 @@ jobs:
   pathmap:
     runs-on: ubuntu-latest
     container:
-      image: debian:trixie-slim
+      image: docker:27.3-cli
+      # image: debian:trixie-slim
       volumes:
       - my_docker_volume:/volume_mount
       - /data/my_data
@@ -27,6 +28,10 @@ jobs:
         env:
           CTX_GH: ${{ toJson(github) }}
           CTX_RUNNER: ${{ toJson(runner) }}
+      - name: Container inspect
+        run: |
+          docker ps
+          docker inspect ${{ job.container.id }}
       - name: Add Path in Container
         run: |
           echo "/github/home/foobar" >> $GITHUB_PATH
