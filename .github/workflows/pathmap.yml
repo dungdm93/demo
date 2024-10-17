@@ -28,6 +28,7 @@ jobs:
         env:
           CTX_GH: ${{ toJson(github) }}
           CTX_RUNNER: ${{ toJson(runner) }}
+          CTX_JOB: ${{ toJson(job) }}
       - name: Container inspect
         run: |
           docker ps
