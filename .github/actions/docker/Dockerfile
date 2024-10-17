@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM docker:27-cli
 WORKDIR /actions
-COPY ./script.bash /actions/script.bash
-ENTRYPOINT [ "/actions/script.bash" ]
+COPY ./script.sh /actions/script.sh
+ENTRYPOINT [ "/actions/script.sh" ]

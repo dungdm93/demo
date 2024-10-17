@@ -31,8 +31,8 @@ jobs:
         with:
           coe: 'true'
           foobar: 'foobar'
-          entrypoint: echo
-          args: Hello world
+          # entrypoint: echo
+          # args: Hello world
         env:
           ABC: xyz
           COE: ${{ inputs.coe }}
