@@ -1,0 +1,16 @@
+name: 'Docker action'
+description: 'Greet someone and record the time'
+runs:
+  using: 'docker'
+  image: docker://ubuntu:22.04
+  entrypoint: /bin/bash
+  args:
+    - -c
+    - |
+      set -x
+
+      id
+      env
+      df -Th
+
+      sleep 3600
