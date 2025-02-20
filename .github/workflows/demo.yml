@@ -16,9 +16,9 @@ jobs:
         CON_FOOBAR: ${{ env.FOOBAR }}
     env:
       FOOBAR: foobar-env
-      ${{ insert }}: # ${{ fromJson('{"first":"first","second":"second"}') }}
-        first: first
-        second: second
+      # ${{ insert }}: # ${{ fromJson('{"first":"first","second":"second"}') }}
+      #   first: first
+      #   second: second
     steps:
       - name: env
         run: env | sort
