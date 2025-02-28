@@ -1,7 +1,7 @@
 name: Demo
 
 on:
-  # push:
+  push:
   workflow_dispatch:
 
 env:
@@ -23,10 +23,13 @@ jobs:
       - name: env
         run: env | sort
 
-      - name: Dump GitHub context
-        env:
+      # - name: Dump GitHub context
+      - env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: |
+          
+          echo "$GITHUB_CONTEXT"
+          echo "Hello world"
 
       - name: con
         run: |

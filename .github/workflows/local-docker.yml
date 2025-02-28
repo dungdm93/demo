@@ -19,15 +19,19 @@ jobs:
   local:
     runs-on: ubuntu-latest
     steps:
+      - uses: docker://alpine:3.8
+        with:
+          entrypoint: /bin/echo
+          args: The ${{ github.event_name }} event triggered this step.
       - run: |
           tree -Fap /home/runner/work/
       - uses: actions/checkout@v4
         env:
           JOB: ${{ toJson(job) }}
           STEPS: ${{ toJson(steps) }}
-      - name: Local Docker
-        id: dck
-        uses: dungdm93/demo/.github/actions/docker@main
+      # - name: Local Docker
+      - id: dck
+        uses: ./.github/actions/docker
         with:
           coe: 'true'
           foobar: 'foobar'
@@ -40,8 +44,8 @@ jobs:
           JOB: ${{ toJson(job) }}
           STEPS: ${{ toJson(steps) }}
           STEP_INPUTS: ${{ toJson(inputs) }}
-      - name: Local Docker2
-        id: dck2
+      # - name: Local Docker2
+      - id: dck2
         uses: dungdm93/demo/.github/actions/docker2@main
         with:
           entrypoint: echo
