@@ -20,6 +20,13 @@ jobs:
       #   first: first
       #   second: second
     steps:
+      - name: command message
+        run: |
+          echo "::debug::Set the Octocat variable"
+          echo "::notice file=.github/workflows/demo.yml,line=1,col=5,endColumn=7::The notice message"
+          echo "::warning file=.github/workflows/demo.yml,line=2,col=5,endColumn=7,title=WARNING TITLE::The warning message"
+          echo "::error file=.github/workflows/demo.yml,line=3,col=5,endColumn=7,title=ERROR TITLE::The error message"
+
       - name: env
         run: env | sort
 
