@@ -10,10 +10,10 @@ env:
 jobs:
   job-run-on-vm:
     runs-on: self-hosted #ubuntu-latest
-    container: 
-      image: docker:26.1-cli
-      env:
-        CON_FOOBAR: ${{ env.FOOBAR }}
+    # container: 
+    #   image: docker:26.1-cli
+    #   env:
+    #     CON_FOOBAR: ${{ env.FOOBAR }}
     env:
       FOOBAR: foobar-env
       # ${{ insert }}: # ${{ fromJson('{"first":"first","second":"second"}') }}
