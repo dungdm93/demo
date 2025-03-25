@@ -9,7 +9,7 @@ env:
 
 jobs:
   job-run-on-vm:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted #ubuntu-latest
     container: 
       image: docker:26.1-cli
       env:
