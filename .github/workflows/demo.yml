@@ -9,16 +9,9 @@ env:
 
 jobs:
   job-run-on-vm:
-    runs-on: self-hosted #ubuntu-latest
-    # container: 
-    #   image: docker:26.1-cli
-    #   env:
-    #     CON_FOOBAR: ${{ env.FOOBAR }}
+    runs-on: self-hosted
     env:
       FOOBAR: foobar-env
-      # ${{ insert }}: # ${{ fromJson('{"first":"first","second":"second"}') }}
-      #   first: first
-      #   second: second
     steps:
       - name: command message
         run: |
@@ -33,8 +26,7 @@ jobs:
       # - name: Dump GitHub context
       - env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          
+        run: |          
           echo "$GITHUB_CONTEXT"
           echo "Hello world"
 
@@ -46,63 +38,10 @@ jobs:
           echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
           echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
 
-      # - name: con
-      #   run: |
-      #     echo "CONTINUTE=true" >> "$GITHUB_ENV"
-      #     false
-      #   continue-on-error: ${{ env.CONTINUTE == 'true' }}
+      - name: Generate 10M log
+        run: |
+          go run main.go 10
 
-      # - name: Dump env context
-      #   env:
-      #     ENV_CONTEXT: ${{ toJson(env) }}
-      #   run: echo "$ENV_CONTEXT"
-
-      # - name: Dump vars context
-      #   env:
-      #     VARS_CONTEXT: ${{ toJson(vars) }}
-      #   run: echo "$VARS_CONTEXT"
-
-      # - name: Dump job context
-      #   env:
-      #     JOB_CONTEXT: ${{ toJson(job) }}
-      #   run: echo "$JOB_CONTEXT"
-
-      # # - name: Dump jobs context
-      # #   env:
-      # #     JOBS_CONTEXT: ${{ toJson(jobs) }}
-      # #   run: echo "$JOBS_CONTEXT"
-
-      # - name: Dump steps context
-      #   env:
-      #     STEPS_CONTEXT: ${{ toJson(steps) }}
-      #   run: echo "$STEPS_CONTEXT"
-
-      # - name: Dump runner context
-      #   env:
-      #     RUNNER_CONTEXT: ${{ toJson(runner) }}
-      #   run: echo "$RUNNER_CONTEXT"
-
-      # - name: Dump secrets context
-      #   env:
-      #     SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      #   run: echo "$SECRETS_CONTEXT"
-
-      # - name: Dump strategy context
-      #   env:
-      #     STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-      #   run: echo "$STRATEGY_CONTEXT"
-
-      # - name: Dump matrix context
-      #   env:
-      #     MATRIX_CONTEXT: ${{ toJson(matrix) }}
-      #   run: echo "$MATRIX_CONTEXT"
-
-      # - name: Dump needs context
-      #   env:
-      #     NEEDS_CONTEXT: ${{ toJson(needs) }}
-      #   run: echo "$NEEDS_CONTEXT"
-
-      # - name: Dump inputs context
-      #   env:
-      #     INPUTS_CONTEXT: ${{ toJson(inputs) }}
-      #   run: echo "$INPUTS_CONTEXT"
+      - name: Generate 100M log
+        run: |
+          go run main.go 100
