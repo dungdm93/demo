@@ -45,6 +45,6 @@ jobs:
         run: |
           go run main.go 10
 
-      - name: Generate 100M log
-        run: |
-          go run main.go 100
+      # - name: Generate 100M log
+      #   run: |
+      #     go run main.go 100
