@@ -41,9 +41,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate 10M log
+
+      - name: inspect
         run: |
-          go run main.go 10
+          ls -ahl
+          pwd
+          cat /etc/os-release
+
+      # - name: Generate 10M log
+      #   run: |
+      #     go run main.go 10
 
       # - name: Generate 100M log
       #   run: |
