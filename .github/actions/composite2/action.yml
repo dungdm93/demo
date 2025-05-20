@@ -1,0 +1,8 @@
+name: A Composite Action2
+description: 'Greet someone and record the time'
+runs:
+  using: composite
+  steps:
+  - id: step1
+    run: echo "Hello world"
+    shell: bash

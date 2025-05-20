@@ -43,10 +43,7 @@ jobs:
 
 
       - name: inspect
-        run: |
-          ls -ahl
-          pwd
-          cat /etc/os-release
+        uses: ./.github/actions/composite
 
       # - name: Generate 10M log
       #   run: |

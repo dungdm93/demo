@@ -7,10 +7,18 @@ outputs:
 runs:
   using: composite
   steps:
-  - run: env
+  - id: step1
+    run: env
     shell: bash
     env:
       INTERNAL_ABC: xyz
       INTERNAL_COE: ${{ inputs.coe }}
       INTERNAL_FOOBAR: ${{ inputs.foobar }}
       INTERNAL_STEP_INPUTS: ${{ toJson(inputs) }}
+  - id: step2
+    uses: actions/github-script@v7
+    with:
+      script: return "Hello!"
+      result-encoding: string
+  - id: step3
+    uses: ./.github/actions/composite2
