@@ -9,7 +9,7 @@ env:
 
 jobs:
   job-run-on-vm:
-    runs-on: self-hosted
+    runs-on: 	ubuntu-latest #self-hosted
     env:
       FOOBAR: foobar-env
     steps:
