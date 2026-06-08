@@ -27,9 +27,7 @@ jobs:
       - name: env
         run: env | sort
 
-      - run: echo ${{ env.ABC }}
-        env:
-          ABC: abc
+      - uses: dungdm93/demo/.github/actions/js1@main
 
       # # - name: Dump GitHub context
       # - env:
