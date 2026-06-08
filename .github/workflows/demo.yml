@@ -9,7 +9,7 @@ env:
 
 jobs:
   job-run-on-vm:
-    runs-on: 	ubuntu-latest #self-hosted
+    runs-on: self-hosted # ubuntu-latest
     env:
       FOOBAR: foobar-env
     steps:
@@ -27,12 +27,13 @@ jobs:
       - name: env
         run: env | sort
 
-      - uses: dungdm93/demo/.github/actions/js1@main
+      # - name: LocalJS
+      #   uses: dungdm93/demo/.github/actions/js1@main
 
       # # - name: Dump GitHub context
       # - env:
       #     GITHUB_CONTEXT: ${{ toJson(github) }}
-      #   run: |          
+      #   run: |
       #     echo "$GITHUB_CONTEXT"
       #     echo "Hello world"
       #
