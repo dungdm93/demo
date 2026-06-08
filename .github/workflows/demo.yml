@@ -27,6 +27,8 @@ jobs:
       - name: env
         run: env | sort
 
+      - run: echo ${{ FOOBAR }}
+
       # # - name: Dump GitHub context
       # - env:
       #     GITHUB_CONTEXT: ${{ toJson(github) }}
