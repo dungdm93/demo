@@ -27,7 +27,9 @@ jobs:
       - name: env
         run: env | sort
 
-      - run: echo ${{ env.FOOBAR }}
+      - run: echo ${{ env.ABC }}
+        env:
+          ABC: abc
 
       # # - name: Dump GitHub context
       # - env:
