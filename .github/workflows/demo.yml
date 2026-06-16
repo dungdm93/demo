@@ -8,7 +8,7 @@ env:
   FOO: bar
 
 jobs:
-  job-run-on-vm:
+  demox:
     runs-on: self-hosted # ubuntu-latest
     env:
       FOOBAR: foobar-env
