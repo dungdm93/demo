@@ -50,9 +50,9 @@ jobs:
 
       # - uses: ./.github/actions/composite
 
-      # # - name: Generate 10M log
-      # #   run: |
-      # #     go run main.go 10
+      - name: Generate 10M log
+        run: |
+          go run main.go 10
 
       # # - name: Generate 100M log
       # #   run: |
