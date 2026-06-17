@@ -16,6 +16,7 @@ jobs:
       - name: set command
         run: |
           echo "MY_NAME=Octocat" >> $GITHUB_ENV
+          sleep 20
 
       # - name: command message
       #   run: |
