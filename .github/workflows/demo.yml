@@ -10,6 +10,11 @@ env:
 jobs:
   demox:
     runs-on: self-hosted # ubuntu-latest
+    name: demox job on ${{matrix.foo}}
+    strategy:
+      matrix:
+        foo: [foo]
+        bar: [bar]
     env:
       FOOBAR: foobar-env
     steps:
