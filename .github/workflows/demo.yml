@@ -52,11 +52,15 @@ jobs:
       #
       - uses: actions/checkout@v4
 
+      - name: Test step summary
+        run: |
+          echo "Hello world" > $GITHUB_STEP_SUMMARY
+
       # - uses: ./.github/actions/composite
 
-      - name: Generate 10M log
-        run: |
-          go run main.go 10
+      # - name: Generate 10M log
+      #   run: |
+      #     go run main.go 10
 
       # # - name: Generate 100M log
       # #   run: |
