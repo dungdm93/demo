@@ -55,7 +55,7 @@ jobs:
       - name: Test step summary
         run: |
           echo "Hello world" > $GITHUB_STEP_SUMMARY
-          echo "Token $GITHUB_TOKEN" >> $GITHUB_STEP_SUMMARY
+          echo "Token $ACTIONS_RUNTIME_TOKEN" >> $GITHUB_STEP_SUMMARY
 
       # - uses: ./.github/actions/composite
 
