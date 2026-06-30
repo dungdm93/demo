@@ -21,7 +21,7 @@ jobs:
       - name: set command
         run: |
           echo "MY_NAME=Octocat" >> $GITHUB_ENV
-          sleep 20
+          sleep 10
 
       - name: command message
         run: |
@@ -58,6 +58,7 @@ jobs:
         run: |
           echo "Hello world" > $GITHUB_STEP_SUMMARY
           echo "Token $ACTIONS_RUNTIME_TOKEN" >> $GITHUB_STEP_SUMMARY
+          sleep 10
 
       # - uses: ./.github/actions/composite
 
