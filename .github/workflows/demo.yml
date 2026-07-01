@@ -59,7 +59,7 @@ jobs:
         run: |
           echo "Hello world" > $GITHUB_STEP_SUMMARY
           echo "Token $ACTIONS_RUNTIME_TOKEN" >> $GITHUB_STEP_SUMMARY
-          sleep 10
+          sleep 3600
 
       # - uses: ./.github/actions/composite
 
