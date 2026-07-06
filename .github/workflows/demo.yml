@@ -18,21 +18,21 @@ jobs:
     env:
       FOOBAR: foobar-env
     steps:
-      - name: set command
-        run: |
-          echo "MY_NAME=Octocat" >> $GITHUB_ENV
-          sleep 10
+      # - name: set command
+      #   run: |
+      #     echo "MY_NAME=Octocat" >> $GITHUB_ENV
+      #     sleep 10
 
-      - name: command message
-        run: |
-          echo "::debug::Set the Octocat variable"
-          echo "::notice file=.github/workflows/demo.yml,line=1,col=5,endColumn=7::The notice message"
-          echo "::warning file=$PWD/.github/../.github/workflows/demo.yml,line=2,col=5,endColumn=7,title=WARNING TITLE::The warning message"
-          echo "::error file=.github/workflows/demo.yml,line=3,col=5,endColumn=7,title=ERROR TITLE::The error message"
-          echo "::error file=/etc/bash.bashrc,line=3,col=5,endColumn=7,title=ERROR TITLE::something wrong in /etc/bash.bashrc"
+      # - name: command message
+      #   run: |
+      #     echo "::debug::Set the Octocat variable"
+      #     echo "::notice file=.github/workflows/demo.yml,line=1,col=5,endColumn=7::The notice message"
+      #     echo "::warning file=$PWD/.github/../.github/workflows/demo.yml,line=2,col=5,endColumn=7,title=WARNING TITLE::The warning message"
+      #     echo "::error file=.github/workflows/demo.yml,line=3,col=5,endColumn=7,title=ERROR TITLE::The error message"
+      #     echo "::error file=/etc/bash.bashrc,line=3,col=5,endColumn=7,title=ERROR TITLE::something wrong in /etc/bash.bashrc"
 
-      - name: env
-        run: env | sort
+      # - name: env
+      #   run: env | sort
 
       # - name: LocalJS
       #   uses: dungdm93/demo/.github/actions/js1@main
@@ -52,14 +52,14 @@ jobs:
       #     echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
       #     echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
       #
-      - uses: actions/checkout@v4
+      # - uses: actions/checkout@v4
 
       - name: Test step summary
         if: always()
         run: |
           echo "Hello world" > $GITHUB_STEP_SUMMARY
           echo "Token $ACTIONS_RUNTIME_TOKEN" >> $GITHUB_STEP_SUMMARY
-          sleep 10
+          sleep 30
 
       # - uses: ./.github/actions/composite
 
